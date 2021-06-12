@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+
+body{
+    background-image: url('images/bg1.png');
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h2{
+    color: #303841;
+}
+
+
+#realresults{
+    color: #78d1cc;
+}
+
+
+.just_start input[type="text"] {
+    width: 400px;
+    margin-top: 30px;
+    padding: 0.5em 0;
+    color: #303841;
+    border:none;
+    border-bottom: 4px solid #78d1cc;
+    border-radius: 0;
+    background: #dbdfe6;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+
+}
+.btn-start{
+    background: #78d1cc;
+    color: #ffffff ;
+    border: 2px solid #78d1cc;
+    padding: 10px;
+    margin-top: 70px;
+    }
+
+.just_start, .started, .intermediate,.rules{
+    background-color: #ffffff;
+    }
+
+.rules{
+    width: 700px;
+    position: absolute;
+    margin: 0px auto;
+    top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin-top: 150px;
+}
+
+.started, .current_res_c, .current_res_w, .alert_w{
+    margin-top: 100px;
+}       
+
+.alert_w{
+  padding: 20px;
+  background-color: red;
+  color: black;
+}
+
+#finalresult, .intermediate{
+    margin-top:200px;
+    font-size: 30px;
+    text-align: center;
+    color: #303841;
+}
+
+#finalresult_show {
+    text-align: center;
+}
+
+#finalresult{
+	position : absolute;
+	margin-left : 610px;
+	margin-top : 65px;
+}
+
+#tie{
+	margin-left : 40px;
+}
+
+/*#finalresult_show a{
+    margin-top:200px;
+    font-size: 17px;
+    text-align: center;
+    color: #000000;
+    padding: 10px;
+}*/
+/*
+#finalresult{
+	position : absolute;
+    margin-top :25px;
+	margin-left :610px;
+}*/
+
+.choices button{
+    background: #dbdfe6;
+    color: #303841;
+    border: 3px solid #78d1cc;
+    border-radius: 10px;
+    font-size: 17px;
+    padding: 10px;
+    min-width:200px; 
+    min-height:50px;
+    margin-top: 50px;
+    }
+
+.choices button:hover {
+    box-shadow: none ;
+    background: #303841 ;
+    color: #ffffff ;
+    }
+
+.loading-page {
+  width: 100%;
+  position: relative;
+ 
+}
+.loading-page .counter {
+  text-align: center;
+}
+.loading-page .counter p {
+  font-size: 40px;
+  font-weight: 100;
+  color:#78d1cc;
+}
+.loading-page .counter h3 {
+  color: #78d1cc;
+  font-size: 60px;
+  position: fixed;
+  bottom: 30px;
+  left: 0;
+ 
+}
+.loading-page .counter hr {
+  background: #78d1cc;
+  border: none;
+  height: 5px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+.loading-page .counter {
+  position: relative;
+ 
+}
+.loading-page .counter h3.abs {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.loading-page .counter .color {
+  width: 0px;
+  overflow: hidden;
+  color: #f60d54;
+}
+
+#BOX{
+	position : absolute;
+}
+
+#kotak1{
+	position : absolute;
+	margin-top : 100px;
+	margin-left : 340px;
+	width : 300px;
+	height : 300px;
+	color :#eaff87;
+	background : #303841;
+	border-radius : 20px;
+}
+
+#kotak2{
+	position : absolute;
+	margin-top : 100px;
+	margin-left : 730px;
+	width : 300px;
+	height : 300px;
+	color : #eaff87;
+	background : #303841;
+	border-radius : 20px;
+}
+
+/*h3{
+	position : absolute;
+	width : 100px;
+	height : 70px;
+	background : white;
+}*/
+
+#nameUser{
+	/*position : absolute;*/
+	font-family: 'Montserrat', sans-serif;
+	font-size : 40px;
+	text-align : center;
+	color : #00adb5;
+	margin-top : 15px;
+	/*margin-left : 300px;*/
+}
+
+#linkPage{
+	margin-top : 500px;
+	margin-right :60px;
+}
+
+#linkPage a{
+  width : 200px;
+  height : 40px;
+  background-color : #eaff87;
+  border : none;
+  text-align : center;
+  font-size : 13px;
+  border-radius : 10px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+#a:hover{
+  background: #69928f;
+}
+
+a{
+  font-family: 'Montserrat', sans-serif;
+  color : #000000;
+  text-decoration:none;
+  margin-left : 100px;
+}
+
+#kuncijwbn{
+	margin-top : 50px;
+}
+
+.jwbn{
+  margin-top: 25px;
+	width : 200px;
+	height : 20px;
+	background : green;
+}
+
+#jwbn1{
+	position : absolute;
+	margin-left : 180px;
+}
+
+#jwbn2{
+	position : absolute;
+	margin-left : 180px;
+}
+
+#jwbn3{
+	position : absolute;
+	margin-left : 180px;
+}
+
+#jwbn4{
+	position : absolute;
+	margin-left : 180px;
+}
+/*#jwbnC{
+	width : 200px;
+	height : 20px;
+	background : green;
+}*/
+
+/*#linkPage{
+	position : absolute;
+	margin-top :480px;
+	margin-left : 560px;
+}

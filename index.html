@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Real time Quiz</title>
+	<link rel='stylesheet' href='/stylesheets/bootstrap.min.css' /> <!-- Menghubungkan Dengan bootstrap -->
+	<link rel="stylesheet" href="/stylesheets/style.css" /> <!-- Menghubungkan Dengan CSS -->
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script> <!-- Menghubungkan Dengan JQUERY -->
+	
+	<script>
+	var socket = io.connect("http://localhost:4444");
+	var i,username, j=0, myscore=0, otherscore=0, finalresults, ti, user_id;
+	var qIndex;
+	
+	socket.on('updatechat', function (username, data, id) {
+		$('#conversation').append('<br>' + data + '<br>');
+		user_id = id;
+
+	});
+
+	socket.on('game', function (data) {
+			$('#realtime').append('<b>'+ data + '<br>' );
+	});
+
+	function doFunction(){
+		$(".rules").fadeIn();
+	}
+	var indexRandom = 0;
+	var index;
+	var banyak1 = 15;
+	var banyak2 = 15;
+	var benar1 = 0;
+	var benar2 = 0;
+	socket.on('sendQuestions', function(data){
+		 $(".intermediate").fadeOut('slow');
+
+		doFunction();
+		
+		i=0;
+		
+		$(document).ready(function() {
+			var audioTime = 0;
+			var begin = setInterval(function(){
+
+				if(audioTime == 6){
+					$('audio#time')[0].play();
+					clearInterval(begin);
+				}
+				audioTime++;
+			},1000);
+			
+
+		});
+		
+
+		ti = setInterval(function(){
+			
+		$(".rules").fadeOut();
+		$(".started").fadeIn('slow');
+		$(".loading-page").fadeIn('slow');
+		$("#realresults").fadeIn('slow');
+
+		if(i < 15) {		
+		j=0;j++;
+		qIndex = Math.floor((Math.random() * 30));
+		indexRandom = qIndex;
+		$('audio#nquestion')[0].play();
+		$('#qst').text(data.questions[indexRandom].question);
+		$('#btn1').attr('value', 0).text(data.questions[indexRandom].choices[0]);
+		$('#btn2').attr('value', 1).text(data.questions[indexRandom].choices[1]);
+		$('#btn3').attr('value', 2).text(data.questions[indexRandom].choices[2]);
+		$('#btn4').attr('value', 3).text(data.questions[indexRandom].choices[3]);
+
+
+		//timer
+		$(document).ready(function() {
+		  
+			  var counter = 0;
+			  var c = 1;
+			  index=0;
+			  var k = setInterval(function(){
+		      $(".loading-page .counter h3").html(c + "sec");
+		      $(".loading-page .counter hr").css("width", (c*10) + "%");
+		  	  
+				
+			    counter++;
+			    c++;
+				index++;
+				
+
+			    
+			    if(counter == 10) {
+			        clearInterval(k);
+
+			    }
+		  }, 1000);
+		
+		});
+		//timer
+
+		$("#realtime button").removeClass( "btn disabled" );
+		$("#realtime button").prop('disabled', false);
+		$("#realtime button").click(function() {
+			$("#realtime button").addClass( "btn disabled" );
+    			$("#realtime button").prop('disabled', true);
+    			var givenAns = this.value;
+    			var correctAns = data.questions[indexRandom].correctAnswer; 
+				var coba = data.questions[indexRandom].choices[correctAns];
+    			var response = (givenAns == correctAns); 
+    			if(response){
+    				if(j==1){
+    				socket.emit('result',username,user_id);
+    				console.log("correct ans");
+    				console.log(username);
+    				console.log("value of inner j: "+ j)
+    				$('.current_res_c').fadeIn().delay(800).fadeOut(); j++;}
+					$('audio#correct')[0].play();
+    			}else {
+    				if(j==1){
+					$('.alert_w').fadeIn().html("Salah !! Jawaban yang benar adalah : " + coba).delay(3000).fadeOut();
+					$('audio#wrong')[0].play();
+    				//$('.current_res_w').fadeIn().delay(800).fadeOut();
+					j++;}
+    			}
+		});
+
+
+	    }i++;
+
+		if(i==16){
+				clearInterval(ti);
+				banyak1 = banyak1 - benar1;
+				banyak2 = banyak2 - benar2;
+				$('audio#gameover')[0].play();
+				$(".started").fadeOut('slow');
+				$(".loading-page").fadeOut();
+				$("#finalresult_show").fadeIn('slow');
+
+				$("#jwbn1").text(benar1);
+				$("#jwbn3").text(benar2);
+
+				$("#nameUser").text(username);
+				$("#SkorSaya").text(myscore);
+				$("#SkorLawan").text(otherscore);
+				$("#myresult").hide(myscore);
+				$("#otherresult").hide(otherscore);
+				$("h4").hide();
+				$("h4").hide();
+								
+				$("#jwbn2").text(banyak1);
+				$("#jwbn4").text(banyak2);
+				localStorage.setItem("score", myscore);
+				localStorage.setItem("username", username);
+
+
+				const mostRecentScore = localStorage.getItem("score");
+				const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+				console.log(highScores);
+
+				const score = {
+					score : mostRecentScore,
+					user : username
+				};
+				highScores.push(score);
+				highScores.sort((a,b) => b.score - a.score);
+				highScores.splice(5);
+				localStorage.setItem("highScores", JSON.stringify(highScores));
+
+
+			}
+
+
+		}, 10000);
+
+		
+
+	});
+	
+	socket.on('viewresult',function(usr){
+		if(usr == username){
+			benar1+=1;
+			if(index < 5){
+				$('audio#correct')[0].pause();
+				$('audio#bonus')[0].play();
+				myscore+=20;
+				$("#myresult").text(myscore);
+			}else{
+				myscore+=10;
+				$("#myresult").text(myscore);
+			}
+			
+					
+			
+						
+		}
+		else{
+			benar2+=1;
+			if(index < 5){
+				
+				otherscore+=20;
+				$("#otherresult").text(otherscore);
+			}else{
+				otherscore+=10;
+				$("#otherresult").text(otherscore);
+			}
+			
+				
+			
+		}
+
+		if(myscore>otherscore){
+			$("#finalresult").text("You Win!");
+			//finalresults=0;
+			//console.log("final winner");
+		} else if(myscore<otherscore){
+			$("#finalresult").text("You Lose..");
+			//finalresults=1;
+			//console.log("final loser");
+		} else{
+			//finalresults=2;
+			$("#finalresult").text("Tie!");
+		}
+					
+		//Correct Answer Show
+		/* if(myscore == 10){
+			$("#jwbn1").text(1);
+		} else if(myscore == 20){
+			$("#jwbn1").text(2);
+		} else if(myscore == 30){
+			$("#jwbn1").text(3);
+		} else if(myscore == 40){
+			$("#jwbn1").text(4);
+		} else if(myscore == 50){
+			$("#jwbn1").text(5);
+		} else if(myscore == 60){
+			$("#jwbn1").text(6);
+		} else if(myscore == 70){
+			$("#jwbn1").text(7);
+		} else if(myscore == 80){
+			$("#jwbn1").text(8);
+		} else if(myscore == 90){
+			$("#jwbn1").text(9);
+		} else if(myscore == 100){
+			$("#jwbn1").text(10);
+		} else if(myscore == 110){
+			$("#jwbn1").text(11);
+		} else if(myscore == 120){
+			$("#jwbn1").text(12);
+		} else if(myscore == 130){
+			$("#jwbn1").text(13);
+		} else if(myscore == 140){
+			$("#jwbn1").text(14);
+		} else if(myscore == 150){
+			$("#jwbn1").text(15);
+		} else {
+			$("#jwbn1").text(0);
+		}
+		
+		if(otherscore == 10){
+			$("#jwbn3").text(1);
+		} else if(otherscore == 20){
+			$("#jwbn3").text(2);
+		} else if(otherscore == 30){
+			$("#jwbn3").text(3);
+		} else if(otherscore == 40){
+			$("#jwbn3").text(4);
+		} else if(otherscore == 50){
+			$("#jwbn3").text(5);
+		} else if(otherscore == 60){
+			$("#jwbn3").text(6);
+		} else if(otherscore == 70){
+			$("#jwbn3").text(7);
+		} else if(otherscore == 80){
+			$("#jwbn3").text(8);
+		} else if(otherscore == 90){
+			$("#jwbn3").text(9);
+		} else if(otherscore == 100){
+			$("#jwbn3").text(10);
+		} else if(otherscore == 110){
+			$("#jwbn3").text(11);
+		} else if(otherscore == 120){
+			$("#jwbn3").text(12);
+		} else if(otherscore == 130){
+			$("#jwbn3").text(13);
+		} else if(otherscore == 140){
+			$("#jwbn3").text(14);
+		} else if(otherscore == 150){
+			$("#jwbn3").text(15);
+		} else {
+			$("#jwbn3").text(0);
+		}
+		
+		
+		
+		//Wrong Answer Show
+		if(myscore == 10){
+			$("#jwbn2").text(14);
+		} else if(myscore == 20){
+			$("#jwbn2").text(13);
+		} else if(myscore == 30){
+			$("#jwbn2").text(12);
+		} else if(myscore == 40){
+			$("#jwbn2").text(11);
+		} else if(myscore == 50){
+			$("#jwbn2").text(10);
+		} else if(myscore == 60){
+			$("#jwbn2").text(9);
+		} else if(myscore == 70){
+			$("#jwbn2").text(8);
+		} else if(myscore == 80){
+			$("#jwbn2").text(7);
+		} else if(myscore == 90){
+			$("#jwbn2").text(6);
+		} else if(myscore == 100){
+			$("#jwbn2").text(5);
+		} else if(myscore == 110){
+			$("#jwbn2").text(4);
+		} else if(myscore == 120){
+			$("#jwbn2").text(3);
+		} else if(myscore == 130){
+			$("#jwbn2").text(2);
+		} else if(myscore == 140){
+			$("#jwbn2").text(1);
+		} else if(myscore == 150){
+			$("#jwbn2").text(0);
+		} else {
+			$("#jwbn2").text(0);
+		}
+		
+		if(otherscore == 10){
+			$("#jwbn4").text(14);
+		} else if(otherscore == 20){
+			$("#jwbn4").text(13);
+		} else if(otherscore == 30){
+			$("#jwbn4").text(12);
+		} else if(otherscore == 40){
+			$("#jwbn4").text(11);
+		} else if(otherscore == 50){
+			$("#jwbn4").text(10);
+		} else if(otherscore == 60){
+			$("#jwbn4").text(9);
+		} else if(otherscore == 70){
+			$("#jwbn4").text(8);
+		} else if(otherscore == 80){
+			$("#jwbn4").text(7);
+		} else if(otherscore == 90){
+			$("#jwbn4").text(6);
+		} else if(otherscore == 100){
+			$("#jwbn4").text(5);
+		} else if(otherscore == 110){
+			$("#jwbn4").text(4);
+		} else if(otherscore == 120){
+			$("#jwbn4").text(3);
+		} else if(otherscore == 130){
+			$("#jwbn4").text(2);
+		} else if(otherscore == 140){
+			$("#jwbn4").text(1);
+		} else if(otherscore == 150){
+			$("#jwbn4").text(0);
+		} else {
+			$("#jwbn4").text(0);
+		} */
+		
+	}); 
+	
+/* 	socket.on('viewresult',function(usr){
+		if(usr == username){
+			
+				myscore+=10;
+				$("#myresult").text(myscore);			
+		}
+		else{
+				otherscore+=10;
+				$("#otherresult").text(otherscore);
+		}
+
+		if(myscore>otherscore){
+			$("#finalresult").text("You Win!");
+			//finalresults=0;
+			//console.log("final winner");
+		} else if(myscore<otherscore){
+			$("#finalresult").text("You Lose..");
+			//finalresults=1;
+			//console.log("final loser");
+		} else{
+			//finalresults=2;
+			$("#finalresult").text("Tie!");
+		}
+
+	}); */
+
+
+	$(document).ready(function(){
+        $('#btnJoin').click(function(){
+		  $('audio#sound-join')[0].play();
+          $(".just_start").fadeOut();
+          username = $("#input_user").val();
+          if(username !=''){
+            socket.emit('addClient', username);
+          } else {
+            alert("USERNAME PLEASE!");
+            window.location="http://localhost:4444";
+          }
+        });
+      });
+
+
+
+	</script>
+</head>
+<body>
+
+<div class="row">
+	<div id="realresults" style='display:none;'>
+		<div class="col-md-12">
+			<div class="col-md-6">
+				<h4>My Score <b><div id="myresult" >0</div></b></h4>
+			</div>
+			<div class="col-md-6" style="text-align:right;">
+				<h4>Opponent Score<b><div id="otherresult" >0</div></b></h4>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-md-12 text-center">
+		<div class="rules" style='display:none;'>
+			<h2>2 Players Connected <br>Game akan dimulai dalam 10 detik...</h2>
+				<div class="panel panel-warning"> 
+					<div class="panel-heading"> 
+						<h3 class="panel-title">Rules</h3> 
+					</div> 
+					<div class="panel-body"> 
+						<ul style="text-align:left;">
+							<li>Setiap Soal memiliki waktu 10 detik</li>
+							<li>Soal mengandung 3 tema, yaitu cybersecurity, RPL, dan game</li>
+							<li>Terdapat 15 soal</li>
+						</ul>
+					</div> 
+				</div> 
+		</div>
+	</div>
+</div>
+
+<div class="row started" id="realtime" style='display:none;'> 
+	<div class="question">
+		<div class="row text-center">
+		  <div class="col-md-12"><h2>
+		  <br>
+		  <p id="qst"></p>
+		  </h2></div>
+		</div>
+	</div>
+
+	<div class="choices">
+		<div class="row">
+		  <div class="col-md-4 col-sm-6 col-md-offset-3">
+		  	<button id="btn1" value=""></button>
+		  </div>
+		  <div class="col-md-3  col-sm-6">
+		  	<button id="btn2" value=""></button>
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="col-md-4 col-sm-6 col-md-offset-3">
+		  	<button id="btn3" value=""></button>
+		  </div>
+		  <div class="col-md-3 col-sm-6">
+		  	<button id="btn4" value=""></button>
+		  </div>
+		</div>
+	</div>
+</div>
+
+<div class="current_res_c text-center" style='display:none;'>
+<div class='alert alert-success' role='alert'>Bagus !! Jawaban anda benar</div>
+</div>
+
+<!-- <div class="current_res_w text-center" style='display:none;'>
+<div class='alert alert-danger' role='alert'>Waah !! Jawabannya salah</div>
+</div> -->
+
+<div class="alert_w text-center" style='display:none;'>
+<div class='alert alert-danger' role='alert'></div>
+</div>
+
+<div class="intermediate">
+	<div id="conversation"> </div>
+</div>
+
+
+
+<div class="just_start" >
+	<div class="row text-center">
+		<h2>Selamat Datang di Kuis Kami </h2>
+		<input type="text" id="input_user" placeholder="Enter Your Username..." required ><br>
+		<button class="btn btn-lg btn-start" id='btnJoin'>Start the Game!</button>
+	</div>
+</div>
+
+
+<div id="view_result"></div>
+
+
+<div class="loading-page" style='display:none;'>
+	<div class="counter">
+		<h3>0sec</h3>
+		<hr>
+	</div>
+</div>
+
+<!--Timer-->
+
+<div id="finalresult_show" style='display:none;'>
+	<div id="finalresult">
+	<div id="tie"> Tie </div>
+	</div>
+		<div id="nameUser"></div>
+		<br>
+			<div id="BOX">
+			
+				<div id="kotak1">
+					<h3> My Score </h3>
+					<div id="SkorSaya"> </div>
+					
+					<div id="kuncijwbn">
+						<div id="jwbn1"> </div>
+						<p class="jwbn"> Correct Answer : </p>
+					</div>
+					
+					<div id="kuncijwbnA">
+						<div id="jwbn2"> </div>
+						<p class="jwbn"> Wrong Answer : </p>
+					</div>
+					
+					<div>
+						<div id="IP"> </div>
+					</div>
+				</div>
+				
+				<div id="kotak2">
+					<h3> Enemy Score </h3>
+					<div id="SkorLawan"> </div>
+
+					<div id="kuncijwbn">
+						<div id="jwbn3"> </div>
+						<p class="jwbn"> Correct Answer : </p>
+					</div>
+					
+					<div id="kuncijwbnA">
+						<div id="jwbn4"> </div>
+						<p class="jwbn"> Wrong Answer : </p>
+					</div>
+		
+				</div>
+			</div>
+			
+			<div>
+				<div id="linkPage">
+					<a href="http://localhost:4444" id="btn11" >Play Again</a>
+					<a href="http://localhost:4444/answer" id="btn12">Answer</a>
+					<a href="http://localhost:4444/highscores" id="btn13">Highscores</a>
+				</div>	
+			</div>
+</div>
+
+<audio id="sound-join">
+	<source src="Button-Join.wav" type="audio/mpeg">
+</audio>
+
+<audio id="nquestion">
+	<source src="Question.wav" type="audio/mpeg">
+</audio>
+
+<audio id="gameover">
+	<source src="GameOver.wav" type="audio/mpeg">
+</audio>
+
+<audio id="wrong">
+	<source src="Wrong.wav" type="audio/mpeg">
+</audio>
+
+<audio id="correct">
+	<source src="star.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="bonus">
+	<source src="Bonus.wav" type="audio/mpeg">
+</audio>
+
+<audio id="time">
+	<source src="Time.wav" type="audio/mpeg">
+</audio>
+
+
+</body>
+</html>

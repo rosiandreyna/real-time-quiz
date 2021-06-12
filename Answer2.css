@@ -1,0 +1,880 @@
+/*KUNCI JAWABAN*/
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+body{
+	background-image : url('images/bg.png');
+	background-size : cover;
+    background-attachment: fixed;
+}
+
+#title{
+	color : white;
+	font-family: 'Ubuntu', sans-serif;
+	letter-spacing : 3.5px;
+	text-align : center;
+}
+
+/* -------------------------------------- QUESTION 1 -------------------------------------- */
+#BOX1{
+	position : absolute;
+	perspective : 800px;
+	margin-top : 3px;
+	margin-left : 25px;
+}
+
+#CARD1{
+	width : 210px;
+	height : 130px;
+	background-color: #78d1cc;
+	border: 5px solid #69928f;
+	border-radius: 10px;
+	transition : transform 1.4s;
+	transform-style : preserve-3d;
+}
+
+#CARD1:hover{
+	transform : rotateY(180deg);
+}
+
+#back1, #front1{
+	position : absolute;
+	width : 210px;
+	height : 130px;
+	backface-visibility : hidden;
+}
+
+#front1{
+	margin-top : 20px;
+	font-size : 15px;
+	width : 190px;
+	height : 130px;
+	border-radius : 20px;
+	text-align : center;
+	margin-left: 10px;
+	color : white;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#back1{
+	margin-top : 20px;
+	font-size : 15px;
+	color : white;
+	width : 190px;
+	height : 130px;
+	transform : rotateY(180deg);
+	border-radius : 20px;
+	text-align : center;
+	margin-top: 55px;
+	margin-left : 10px;
+	resize : both;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+/* -------------------------------------- QUESTION 2 -------------------------------------- */
+
+#BOX2{
+	position : absolute;
+	perspective : 800px;
+	margin-top : 3px;
+	margin-left : 295px;
+}
+
+#CARD2{
+	width : 210px;
+	height : 130px;
+	background-color: #78d1cc;
+	border: 5px solid #69928f;
+	border-radius: 10px;
+	transition : transform 1.4s;
+	transform-style : preserve-3d;
+}
+
+#CARD2:hover{
+	transform : rotateY(180deg);
+}
+
+#back2, #front2{
+	position : absolute;
+	width : 210px;
+	height : 130px;
+	backface-visibility : hidden;
+}
+
+#front2{
+	font-size : 15px;
+	width : 190px;
+	height : 130px;
+	border-radius : 20px;
+	text-align : center;
+	margin-top : 7px;
+	margin-left : 10px;
+	color : white;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#back2{
+	font-size : 15px;
+	color : white;
+	width : 190px;
+	height : 130px;
+	transform : rotateY(180deg);
+	border-radius : 20px;
+	text-align : center;
+	margin-top: 55px;
+	margin-left : 10px;
+	resize : both;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+/* -------------------------------------- QUESTION 3 -------------------------------------- */
+
+#BOX3{
+	position : absolute;
+	perspective : 800px;
+	margin-top : 3px;
+	margin-left : 565px;
+}
+
+#CARD3{
+	width : 210px;
+	height : 130px;
+	background-color: #78d1cc;
+	border: 5px solid #69928f;
+	border-radius: 10px;
+	transition : transform 1.4s;
+	transform-style : preserve-3d;
+}
+
+#CARD3:hover{
+	transform : rotateY(180deg);
+}
+
+#back3, #front3{
+	position : absolute;
+	width : 210px;
+	height : 130px;
+	backface-visibility : hidden;
+}
+
+#front3{
+	font-size : 15px;
+	width : 190px;
+	height : 130px;
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top : 30px;
+	color : white;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#back3{
+	font-size : 15px;
+	color : white;
+	width : 190px;
+	height : 130px;
+	transform : rotateY(180deg);
+	border-radius : 20px;
+	text-align : center;
+	margin-top: 55px;
+	margin-left : 10px;
+	resize : both;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+/* -------------------------------------- QUESTION 4 -------------------------------------- */
+
+#BOX4{
+	position : absolute;
+	perspective : 800px;
+	margin-top : 3px;
+	margin-left : 835px;
+}
+
+#CARD4{
+	width : 210px;
+	height : 130px;
+	background-color: #78d1cc;
+	border: 5px solid #69928f;
+	border-radius: 10px;
+	transition : transform 1.4s;
+	transform-style : preserve-3d;
+}
+
+#CARD4:hover{
+	transform : rotateY(180deg);
+}
+
+#back4, #front4{
+	position : absolute;
+	width : 210px;
+	height : 130px;
+	backface-visibility : hidden;
+}
+
+#front4{
+	font-size : 13px;
+	width : 190px;
+	height : 130px;
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;;
+	margin-top : 7px;
+	color : white;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#back4{
+	font-size : 15px;
+	color : white;
+	width : 190px;
+	height : 130px;
+	transform : rotateY(180deg);
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top: 50px;
+	resize : both;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+/* -------------------------------------- QUESTION 5 -------------------------------------- */
+
+#BOX5{
+	position : absolute;
+	perspective : 800px;
+	margin-top : 3px;
+	margin-left : 1105px;
+}
+
+#CARD5{
+	width : 210px;
+	height : 130px;
+	background-color: #78d1cc;
+	border: 5px solid #69928f;
+	border-radius: 10px;
+	transition : transform 1.4s;
+	transform-style : preserve-3d;
+}
+
+#CARD5:hover{
+	transform : rotateY(180deg);
+}
+
+#back5, #front5{
+	position : absolute;
+	width : 210px;
+	height : 130px;
+	backface-visibility : hidden;
+}
+
+#front5{
+	font-size : 15px;
+	width : 190px;
+	height : 130px;
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top : 35px;
+	color : white;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#back5{
+	font-size : 15px;
+	color : white;
+	width : 190px;
+	height : 130px;
+	transform : rotateY(180deg);
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top: 50px;
+	resize : both;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+/* -------------------------------------- QUESTION 6 -------------------------------------- */
+#BOX6{
+	position : absolute;
+	perspective : 800px;
+	margin-top : 180px;
+	margin-left : 25px;
+}
+
+#CARD6{
+	width : 210px;
+	height : 130px;
+	background-color: #78d1cc;
+	border: 5px solid #69928f;
+	border-radius: 10px;
+	transition : transform 1.4s;
+	transform-style : preserve-3d;
+}
+
+#CARD6:hover{
+	transform : rotateY(180deg);
+}
+
+#back6, #front6{
+	position : absolute;
+	width : 210px;
+	height : 130px;
+	backface-visibility : hidden;
+}
+
+#front6{
+	font-size : 15px;
+	width : 190px;
+	height : 130px;
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top : 50px;
+	color : white;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#back6{
+	margin-top : 28px;
+	font-size : 15px;
+	color : white;
+	width : 190px;
+	height : 130px;
+	transform : rotateY(180deg);
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top: 40px;
+	resize : both;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+/* -------------------------------------- QUESTION 7 -------------------------------------- */
+
+#BOX7{
+	position : absolute;
+	perspective : 800px;
+	margin-top : 180px;
+	margin-left : 295px;
+}
+
+#CARD7{
+	width : 210px;
+	height : 130px;
+	background-color: #78d1cc;
+	border: 5px solid #69928f;
+	border-radius: 10px;
+	transition : transform 1.4s;
+	transform-style : preserve-3d;
+}
+
+#CARD7:hover{
+	transform : rotateY(180deg);
+}
+
+#back7, #front7{
+	position : absolute;
+	width : 210px;
+	height : 130px;
+	backface-visibility : hidden;
+}
+
+#front7{
+	font-size : 15px;
+	width : 190px;
+	height : 130px;
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top : 55px;
+	color : white;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#back7{
+	font-size : 15px;
+	color : white;
+	width : 190px;
+	height : 130px;
+	transform : rotateY(180deg);
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top: 55px;
+	resize : both;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+/* -------------------------------------- QUESTION 8 -------------------------------------- */
+
+#BOX8{
+	position : absolute;
+	perspective : 800px;
+	margin-top : 180px;
+	margin-left : 565px;
+}
+
+#CARD8{
+	width : 210px;
+	height : 130px;
+	background-color: #78d1cc;
+	border: 5px solid #69928f;
+	border-radius: 10px;
+	transition : transform 1.4s;
+	transform-style : preserve-3d;
+}
+
+#CARD8:hover{
+	transform : rotateY(180deg);
+}
+
+#back8, #front8{
+	position : absolute;
+	width : 210px;
+	height : 130px;
+	backface-visibility : hidden;
+}
+
+#front8{
+	font-size : 15px;
+	width : 190px;
+	height : 130px;
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top : 40px;
+	color : white;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#back8{
+	font-size : 15px;
+	color : white;
+	width : 190px;
+	height : 130px;
+	transform : rotateY(180deg);
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top: 55px;
+	resize : both;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+/* -------------------------------------- QUESTION 9 -------------------------------------- */
+
+#BOX9{
+	position : absolute;
+	perspective : 800px;
+	margin-top : 180px;
+	margin-left : 835px;
+}
+
+#CARD9{
+	width : 210px;
+	height : 130px;
+	background-color: #78d1cc;
+	border: 5px solid #69928f;
+	border-radius: 10px;
+	transition : transform 1.4s;
+	transform-style : preserve-3d;
+}
+
+#CARD9:hover{
+	transform : rotateY(180deg);
+}
+
+#back9, #front9{
+	position : absolute;
+	width : 210px;
+	height : 130px;
+	backface-visibility : hidden;
+}
+
+#front9{
+	font-size : 15px;
+	width : 190px;
+	height : 130px;
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top : 40px;
+	color : white;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#back9{
+	font-size : 15px;
+	color : white;
+	width : 190px;
+	height : 130px;
+	transform : rotateY(180deg);
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top: 55px;
+	resize : both;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+/* -------------------------------------- QUESTION 10 -------------------------------------- */
+
+#BOX10{
+	position : absolute;
+	perspective : 800px;
+	margin-top : 180px;
+	margin-left : 1105px;
+}
+
+#CARD10{
+	width : 210px;
+	height : 130px;
+	background-color: #78d1cc;
+	border: 5px solid #69928f;
+	border-radius: 10px;
+	transition : transform 1.4s;
+	transform-style : preserve-3d;
+}
+
+#CARD10:hover{
+	transform : rotateY(180deg);
+}
+
+#back10, #front10{
+	position : absolute;
+	width : 210px;
+	height : 130px;
+	backface-visibility : hidden;
+}
+
+#front10{
+	font-size : 15px;
+	width : 190px;
+	height : 130px;
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top : 50px;
+	color : white;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#back10{
+	font-size : 15px;
+	color : white;
+	width : 190px;
+	height : 130px;
+	transform : rotateY(180deg);
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top: 55px;
+	resize : both;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+/* -------------------------------------- QUESTION 11 -------------------------------------- */
+#BOX11{
+	position : absolute;
+	perspective : 800px;
+	margin-top : 360px;
+	margin-left : 25px;
+}
+
+#CARD11{
+	width : 210px;
+	height : 130px;
+	background-color: #78d1cc;
+	border: 5px solid #69928f;
+	border-radius: 10px;
+	transition : transform 1.4s;
+	transform-style : preserve-3d;
+}
+
+#CARD11:hover{
+	transform : rotateY(180deg);
+}
+
+#back11, #front11{
+	position : absolute;
+	width : 210px;
+	height : 130px;
+	backface-visibility : hidden;
+}
+
+#front11{
+	font-size : 15px;
+	width : 190px;
+	height : 130px;
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top : 50px;
+	color : white;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#back11{
+	font-size : 15px;
+	color : white;
+	width : 190px;
+	height : 130px;
+	transform : rotateY(180deg);
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top: 55px;
+	resize : both;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+/* -------------------------------------- QUESTION 12 -------------------------------------- */
+
+#BOX12{
+	position : absolute;
+	perspective : 800px;
+	margin-top : 360px;
+	margin-left : 295px;
+}
+
+#CARD12{
+	width : 210px;
+	height : 130px;
+	background-color: #78d1cc;
+	border: 5px solid #69928f;
+	border-radius: 10px;
+	transition : transform 1.4s;
+	transform-style : preserve-3d;
+}
+
+#CARD12:hover{
+	transform : rotateY(180deg);
+}
+
+#back12, #front12{
+	position : absolute;
+	width : 210px;
+	height : 100px;
+	backface-visibility : hidden;
+}
+
+#front12{
+	font-size : 15px;
+	width : 190px;
+	height : 100px;
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top : 50px;
+	color : white;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#back12{
+	font-size : 15px;
+	color : white;
+	width : 190px;
+	height : 100px;
+	transform : rotateY(180deg);
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top: 55px;
+	resize : both;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+/* -------------------------------------- QUESTION 13 -------------------------------------- */
+
+#BOX13{
+	position : absolute;
+	perspective : 800px;
+	margin-top : 360px;
+	margin-left : 565px;
+}
+
+#CARD13{
+	width : 210px;
+	height : 130px;
+	background-color: #78d1cc;
+	border: 5px solid #69928f;
+	border-radius: 10px;
+	transition : transform 1.4s;
+	transform-style : preserve-3d;
+}
+
+#CARD13:hover{
+	transform : rotateY(180deg);
+}
+
+#back13, #front13{
+	position : absolute;
+	width : 210px;
+	height : 130px;
+	backface-visibility : hidden;
+}
+
+#front13{
+	font-size : 15px;
+	width : 190px;
+	height : 130px;
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top : 50px;
+	color : white;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#back13{
+	font-size : 15px;
+	color : white;
+	width : 190px;
+	height : 130px;
+	transform : rotateY(180deg);
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top: 55px;
+	resize : both;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+/* -------------------------------------- QUESTION 14 -------------------------------------- */
+
+#BOX14{
+	position : absolute;
+	perspective : 800px;
+	margin-top : 360px;
+	margin-left : 835px;
+}
+
+#CARD14{
+	width : 210px;
+	height : 130px;
+	background-color: #78d1cc;
+	border: 5px solid #69928f;
+	border-radius: 10px;
+	transition : transform 1.4s;
+	transform-style : preserve-3d;
+}
+
+#CARD14:hover{
+	transform : rotateY(180deg);
+}
+
+#back14, #front14{
+	position : absolute;
+	width : 210px;
+	height : 130px;
+	backface-visibility : hidden;
+}
+
+#front14{
+	font-size : 15px;
+	width : 190px;
+	height : 130px;
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top : 30px;
+	color : white;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#back14{
+	font-size : 15px;
+	color : white;
+	width : 190px;
+	height : 130px;
+	transform : rotateY(180deg);
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top: 55px;
+	resize : both;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+/* -------------------------------------- QUESTION 15 -------------------------------------- */
+
+#BOX15{
+	position : absolute;
+	perspective : 800px;
+	margin-top : 360px;
+	margin-left : 1105px;
+}
+
+#CARD15{
+	width : 210px;
+	height : 130px;
+	background-color: #78d1cc;
+	border: 5px solid #69928f;
+	border-radius: 10px;
+	transition : transform 1.4s;
+	transform-style : preserve-3d;
+}
+
+#CARD15:hover{
+	transform : rotateY(180deg);
+}
+
+#back15, #front15{
+	position : absolute;
+	width : 210px;
+	height : 100px;
+	backface-visibility : hidden;
+}
+
+#front15{
+	font-size : 15px;
+	width : 190px;
+	height : 100px;
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top : 50px;
+	color : white;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#back15{
+	font-size : 15px;
+	color : white;
+	width : 190px;
+	height : 100px;
+	transform : rotateY(180deg);
+	border-radius : 20px;
+	text-align : center;
+	margin-left : 10px;
+	margin-top: 55px;
+	resize : both;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+/*------------------------------------------------------------------------------------------------------------*/
+
+#Link{
+	margin-top : 540px;
+	margin-left : 1205px;
+	width : 80px;
+	height : 30px;
+	background-color : #eaff87;
+	border : none;
+	text-align : center;
+	font-size : 16px;
+	border-radius : 10px;
+	cursor: pointer;
+	padding-top: 10px;
+}
+
+#Link:hover{
+	background: #69928f;
+}
+
+a{
+	font-family: 'Ubuntu', sans-serif;
+	color : #000000;
+	text-decoration:none;
+}
